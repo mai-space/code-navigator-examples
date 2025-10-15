@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en" class="h-full scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Code Navigator — The compass for your coding career</title>
+  <meta name="description" content="Code Navigator — Where curiosity meets clarity. Search topics, explore guided learning paths, and contribute ideas." />
+  <link rel="stylesheet" href="output.css" />
+  <link rel="stylesheet" href="theme-base.css" />
+</head>
+<body class="min-h-screen bg-gradient-to-b from-prussian-blue via-rich-black to-rich-black-3 text-columbia-blue-2 selection:bg-paynes-gray/50 selection:text-alice-blue">
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:rounded-md focus:bg-paynes-gray focus:text-alice-blue" href="#main">Skip to content</a>
+
+  <!-- Site header / branding -->
+  <header role="banner" aria-labelledby="site-title" class="sticky top-0 z-40 bg-rich-black/40 backdrop-blur supports-[backdrop-filter]:bg-rich-black/40 border-b border-paynes-gray/30">
+    <div class="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div id="brand" role="img" aria-label="Code Navigator logo: stylized compass" class="h-10 w-10 rounded-full bg-gradient-to-br from-paynes-gray to-prussian-blue shadow-inner shadow-black/40 ring-1 ring-white/10">
+            🧭
+        </div>
+        <div>
+          <h1 id="site-title" class="text-xl md:text-2xl font-semibold text-alice-blue">Code Navigator</h1>
+          <p id="site-slogan" class="text-sm text-columbia-blue-2/80">The compass for your coding career<span aria-hidden="true">.</span></p>
+          <p class="subhead sr-only">Where curiosity meets clarity.</p>
+        </div>
+      </div>
+
+      <!-- Primary navigation (minimal) -->
+      <nav aria-label="Primary" role="navigation">
+        <ul class="flex items-center gap-4 text-sm md:text-base">
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/50 rounded px-2 py-1" href="#topics">Topics</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/50 rounded px-2 py-1" href="#courses">Courses</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/50 rounded px-2 py-1" href="#contribute">Contribute</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/50 rounded px-2 py-1" href="#about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main id="main" role="main" aria-labelledby="main-heading" class="relative z-0">
+    <!-- Hero / Search-first -->
+    <section aria-labelledby="main-heading" id="hero" class="relative py-16 md:py-24 bg-gradient-to-b from-rich-black/0 to-rich-black/30">
+      <div class="mx-auto max-w-5xl px-4">
+        <h2 id="main-heading" class="visually-hidden sr-only">Explore Code Navigator</h2>
+
+        <!-- Search form (prominent, accessible) -->
+        <form role="search" aria-label="Search Code Navigator" id="site-search" action="/search" method="get" class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg shadow-black/30 ring-1 ring-inset ring-white/5 p-4 md:p-6">
+          <label for="q" class="visually-hidden sr-only">Search topics, concepts, or best practices</label>
+          <div class="flex flex-col md:flex-row gap-3">
+            <input
+              id="q"
+              name="q"
+              type="search"
+              inputmode="search"
+              placeholder="Search topics, concepts, or best practices…"
+              aria-describedby="search-hint"
+              required
+              class="flex-1 rounded-xl bg-rich-black/40 text-alice-blue placeholder:columbia-blue-2/70 border border-paynes-gray/30 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-paynes-gray/60"
+            />
+            <button type="submit" aria-label="Search" class="self-start md:self-auto inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium text-seashell bg-cocoa-brown hover:bg-russet focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60 shadow">Search</button>
+          </div>
+          <p id="search-hint" class="visually-hidden sr-only">Try: "accessibility", "clean code", "CI/CD"</p>
+        </form>
+
+        <!-- Quick category buttons (also reachable by keyboard) -->
+        <div id="quick-explore" aria-labelledby="explore-heading" class="mt-8">
+          <h3 id="explore-heading" class="text-columbia-blue text-sm uppercase tracking-wide">Explore by category</h3>
+          <ul role="list" aria-label="Main topic categories" class="mt-3 flex flex-wrap gap-2">
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/basics" aria-describedby="desc-basics">Basics</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/accessibility" aria-describedby="desc-accessibility">Accessibility</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/seo" aria-describedby="desc-seo">SEO</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/security" aria-describedby="desc-security">Security</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/devops" aria-describedby="desc-devops">DevOps</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/best-practices" aria-describedby="desc-bestpractices">Best Practices</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/patterns" aria-describedby="desc-patterns">Patterns</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/leadership" aria-describedby="desc-leadership">Leadership</a></li>
+          </ul>
+
+          <!-- Hidden short descriptions for assistive tech -->
+          <div aria-hidden="true" style="display:none">
+            <p id="desc-basics">Foundations, programming principles and clean code.</p>
+            <p id="desc-accessibility">Making web content usable for everyone.</p>
+            <p id="desc-seo">Discoverability and performance best practices.</p>
+            <p id="desc-security">Protecting applications and users.</p>
+            <p id="desc-devops">Deployment, CI/CD and infrastructure practices.</p>
+            <p id="desc-bestpractices">Coding standards, reviews and design guidelines.</p>
+            <p id="desc-patterns">Common design patterns and anti-patterns.</p>
+            <p id="desc-leadership">Mentoring, team practices and architecture decisions.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wave separator to next section (spacer) -->
+      <div aria-hidden="true">
+        <svg id="wave-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 180" preserveAspectRatio="none" class="block w-full h-40 md:h-56 lg:h-72 pointer-events-none">
+          <defs>
+            <linearGradient id="wave-grad-1" x1="0" x2="1" y1="0" y2="0">
+              <stop stop-color="#0d364e" offset="0"></stop>
+              <stop stop-color="#071d29" offset="1"></stop>
+            </linearGradient>
+          </defs>
+          <g transform="translate(0, 180) scale(1,-1)">
+            <path d="" fill="url(#wave-grad-1)" opacity="0.25">
+              <animate attributeName="d" dur="18s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcmod="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="-6s" values="M0 0L 0 120Q 136.6 140  273.2 110T 546.4 80T 819.6 95T 1092.8 60T 1366 40L 1366 0 Z;M0 0L 0 130Q 136.6 100  273.2 90T 546.4 85T 819.6 70T 1092.8 75T 1366 45L 1366 0 Z;M0 0L 0 110Q 136.6 150  273.2 120T 546.4 100T 819.6 80T 1092.8 65T 1366 55L 1366 0 Z;M0 0L 0 120Q 136.6 140  273.2 110T 546.4 80T 819.6 95T 1092.8 60T 1366 40L 1366 0 Z"></animate>
+            </path>
+            <path d="" fill="url(#wave-grad-1)" opacity="0.35">
+              <animate attributeName="d" dur="14s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcmod="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="-3s" values="M0 0L 0 120Q 136.6 140  273.2 110T 546.4 80T 819.6 95T 1092.8 60T 1366 40L 1366 0 Z;M0 0L 0 130Q 136.6 100  273.2 90T 546.4 85T 819.6 70T 1092.8 75T 1366 45L 1366 0 Z;M0 0L 0 110Q 136.6 150  273.2 120T 546.4 100T 819.6 80T 1092.8 65T 1366 55L 1366 0 Z;M0 0L 0 120Q 136.6 140  273.2 110T 546.4 80T 819.6 95T 1092.8 60T 1366 40L 1366 0 Z"></animate>
+            </path>
+            <path d="" fill="url(#wave-grad-1)" opacity="0.5">
+              <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcmod="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="0s" values="M0 0L 0 120Q 136.6 140  273.2 110T 546.4 80T 819.6 95T 1092.8 60T 1366 40L 1366 0 Z;M0 0L 0 130Q 136.6 100  273.2 90T 546.4 85T 819.6 70T 1092.8 75T 1366 45L 1366 0 Z;M0 0L 0 110Q 136.6 150  273.2 120T 546.4 100T 819.6 80T 1092.8 65T 1366 55L 1366 0 Z;M0 0L 0 120Q 136.6 140  273.2 110T 546.4 80T 819.6 95T 1092.8 60T 1366 40L 1366 0 Z"></animate>
+            </path>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Topic overview grid -->
+    <section id="topics" aria-labelledby="topics-heading" class="relative py-16 md:py-24 bg-gradient-to-b from-rich-black/30 to-rich-black-2/60">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 id="topics-heading" class="text-2xl md:text-3xl font-semibold text-alice-blue">Topics</h2>
+        <p class="lead mt-2 text-columbia-blue-2/90">Structured paths to guide your learning journey.</p>
+
+        <ul role="list" aria-label="Topic overview" id="topic-list" class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <li>
+            <article aria-labelledby="t-basics" class="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-md shadow-black/30 p-5">
+              <h3 id="t-basics" class="text-xl font-medium text-alice-blue"><a class="hover:underline" href="/topics/basics">Basics</a></h3>
+              <p class="mt-2 text-columbia-blue-2">Programming principles, clean code, and version control.</p>
+              <a class="mt-4 inline-flex items-center text-cocoa-brown hover:text-russet" href="/topics/basics">Start exploring</a>
+            </article>
+          </li>
+
+          <li>
+            <article aria-labelledby="t-accessibility" class="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-md shadow-black/30 p-5">
+              <h3 id="t-accessibility" class="text-xl font-medium text-alice-blue"><a class="hover:underline" href="/topics/accessibility">Accessibility</a></h3>
+              <p class="mt-2 text-columbia-blue-2">ARIA, keyboard navigation, and inclusive design practices.</p>
+              <a class="mt-4 inline-flex items-center text-cocoa-brown hover:text-russet" href="/topics/accessibility">Start exploring</a>
+            </article>
+          </li>
+
+          <li>
+            <article aria-labelledby="t-security" class="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-md shadow-black/30 p-5">
+              <h3 id="t-security" class="text-xl font-medium text-alice-blue"><a class="hover:underline" href="/topics/security">Security</a></h3>
+              <p class="mt-2 text-columbia-blue-2">OWASP fundamentals, authentication, and safe practices.</p>
+              <a class="mt-4 inline-flex items-center text-cocoa-brown hover:text-russet" href="/topics/security">Start exploring</a>
+            </article>
+          </li>
+
+          <!-- ...more topic cards as needed -->
+        </ul>
+      </div>
+
+      <!-- Wave separator to next section (spacer) -->
+      <div aria-hidden="true">
+        <svg id="wave-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 180" preserveAspectRatio="none" class="block w-full h-40 md:h-56 lg:h-72 pointer-events-none">
+          <defs>
+            <linearGradient id="wave-grad-2" x1="0" x2="1" y1="0" y2="0">
+              <stop stop-color="#071d29" offset="0"></stop>
+              <stop stop-color="#061720" offset="1"></stop>
+            </linearGradient>
+          </defs>
+          <g transform="translate(0, 180) scale(1,-1)">
+            <path d="" fill="url(#wave-grad-2)" opacity="0.22">
+              <animate attributeName="d" dur="18s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcmod="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="-6s" values="M0 0L 0 120Q 136.6 130  273.2 100T 546.4 85T 819.6 90T 1092.8 70T 1366 50L 1366 0 Z;M0 0L 0 130Q 136.6 120  273.2 110T 546.4 90T 819.6 80T 1092.8 75T 1366 55L 1366 0 Z;M0 0L 0 110Q 136.6 140  273.2 120T 546.4 95T 819.6 85T 1092.8 70T 1366 60L 1366 0 Z;M0 0L 0 120Q 136.6 130  273.2 100T 546.4 85T 819.6 90T 1092.8 70T 1366 50L 1366 0 Z"></animate>
+            </path>
+            <path d="" fill="url(#wave-grad-2)" opacity="0.33">
+              <animate attributeName="d" dur="14s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcmod="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="-3s" values="M0 0L 0 120Q 136.6 130  273.2 100T 546.4 85T 819.6 90T 1092.8 70T 1366 50L 1366 0 Z;M0 0L 0 130Q 136.6 120  273.2 110T 546.4 90T 819.6 80T 1092.8 75T 1366 55L 1366 0 Z;M0 0L 0 110Q 136.6 140  273.2 120T 546.4 95T 819.6 85T 1092.8 70T 1366 60L 1366 0 Z;M0 0L 0 120Q 136.6 130  273.2 100T 546.4 85T 819.6 90T 1092.8 70T 1366 50L 1366 0 Z"></animate>
+            </path>
+            <path d="" fill="url(#wave-grad-2)" opacity="0.45">
+              <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcmod="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="-2s" values="M0 0L 0 120Q 136.6 130  273.2 100T 546.4 85T 819.6 90T 1092.8 70T 1366 50L 1366 0 Z;M0 0L 0 130Q 136.6 120  273.2 110T 546.4 90T 819.6 80T 1092.8 75T 1366 55L 1366 0 Z;M0 0L 0 110Q 136.6 140  273.2 120T 546.4 95T 819.6 85T 1092.8 70T 1366 60L 1366 0 Z;M0 0L 0 120Q 136.6 130  273.2 100T 546.4 85T 819.6 90T 1092.8 70T 1366 50L 1366 0 Z"></animate>
+            </path>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Courses / learning paths -->
+    <section id="courses" aria-labelledby="courses-heading" class="relative py-16 md:py-24 bg-gradient-to-b from-rich-black-2/60 to-rich-black-2/80">
+      <div class="mx-auto max-w-6xl px-4">
+        <h2 id="courses-heading" class="text-2xl md:text-3xl font-semibold text-alice-blue">Learn by Topic</h2>
+        <p class="lead mt-2 text-columbia-blue-2/90">Step-by-step guides and course-like learning paths — free for now.</p>
+
+        <ul role="list" aria-label="Featured courses" id="course-list" class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <li>
+            <article aria-labelledby="c-clean-code" aria-describedby="c-clean-code-desc" class="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-md shadow-black/30 p-5">
+              <h3 id="c-clean-code" class="text-xl font-medium text-alice-blue">Foundations of Clean Code</h3>
+              <p id="c-clean-code-desc" class="mt-2 text-columbia-blue-2">Build maintainable software with clarity and confidence.</p>
+              <p class="mt-4"><strong class="text-columbia-blue">Status:</strong> <span class="text-alice-blue">Available</span></p>
+              <a class="mt-4 inline-flex items-center rounded-lg px-4 py-2 bg-cocoa-brown text-seashell hover:bg-russet focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/courses/clean-code" aria-label="Open course Foundations of Clean Code">Open course</a>
+            </article>
+          </li>
+
+          <li>
+            <article aria-labelledby="c-devops" aria-describedby="c-devops-desc" class="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-md shadow-black/30 p-5">
+              <h3 id="c-devops" class="text-xl font-medium text-alice-blue">Introduction to DevOps</h3>
+              <p id="c-devops-desc" class="mt-2 text-columbia-blue-2">Automate, deploy, and manage code like a pro.</p>
+              <p class="mt-4"><strong class="text-columbia-blue">Status:</strong> <span class="text-columbia-blue-2">Coming soon</span></p>
+              <a class="mt-4 inline-flex items-center rounded-lg px-4 py-2 bg-white/5 text-columbia-blue-2 cursor-not-allowed border border-white/10" href="/courses/devops" aria-disabled="true">Coming soon</a>
+            </article>
+          </li>
+
+          <li>
+            <article aria-labelledby="c-security" aria-describedby="c-security-desc" class="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-md shadow-black/30 p-5">
+              <h3 id="c-security" class="text-xl font-medium text-alice-blue">Web Security Essentials</h3>
+              <p id="c-security-desc" class="mt-2 text-columbia-blue-2">Learn how to protect your users and systems.</p>
+              <p class="mt-4"><strong class="text-columbia-blue">Status:</strong> <span class="text-columbia-blue-2">Coming soon</span></p>
+              <a class="mt-4 inline-flex items-center rounded-lg px-4 py-2 bg-white/5 text-columbia-blue-2 cursor-not-allowed border border-white/10" href="/courses/security" aria-disabled="true">Coming soon</a>
+            </article>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Wave separator to next section (spacer) -->
+      <div aria-hidden="true">
+        <svg id="wave-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 180" preserveAspectRatio="none" class="block w-full h-40 md:h-56 lg:h-72 pointer-events-none">
+          <defs>
+            <linearGradient id="wave-grad-3" x1="0" x2="1" y1="0" y2="0">
+              <stop stop-color="#061720" offset="0"></stop>
+              <stop stop-color="#041017" offset="1"></stop>
+            </linearGradient>
+          </defs>
+          <g transform="translate(0, 180) scale(1,-1)">
+            <path d="" fill="url(#wave-grad-3)" opacity="0.2">
+              <animate attributeName="d" dur="20s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcmod="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="-8s" values="M0 0L 0 120Q 136.6 140  273.2 110T 546.4 80T 819.6 95T 1092.8 60T 1366 40L 1366 0 Z;M0 0L 0 130Q 136.6 100  273.2 90T 546.4 85T 819.6 70T 1092.8 75T 1366 45L 1366 0 Z;M0 0L 0 110Q 136.6 150  273.2 120T 546.4 100T 819.6 80T 1092.8 65T 1366 55L 1366 0 Z;M0 0L 0 120Q 136.6 140  273.2 110T 546.4 80T 819.6 95T 1092.8 60T 1366 40L 1366 0 Z"></animate>
+            </path>
+            <path d="" fill="url(#wave-grad-3)" opacity="0.33">
+              <animate attributeName="d" dur="14s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcmod="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="-6s" values="M0 0L 0 120Q 136.6 140  273.2 110T 546.4 80T 819.6 95T 1092.8 60T 1366 40L 1366 0 Z;M0 0L 0 130Q 136.6 100  273.2 90T 546.4 85T 819.6 70T 1092.8 75T 1366 45L 1366 0 Z;M0 0L 0 110Q 136.6 150  273.2 120T 546.4 100T 819.6 80T 1092.8 65T 1366 55L 1366 0 Z;M0 0L 0 120Q 136.6 140  273.2 110T 546.4 80T 819.6 95T 1092.8 60T 1366 40L 1366 0 Z"></animate>
+            </path>
+            <path d="" fill="url(#wave-grad-3)" opacity="0.5">
+              <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcmod="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="-4s" values="M0 0L 0 120Q 136.6 140  273.2 110T 546.4 80T 819.6 95T 1092.8 60T 1366 40L 1366 0 Z;M0 0L 0 130Q 136.6 100  273.2 90T 546.4 85T 819.6 70T 1092.8 75T 1366 45L 1366 0 Z;M0 0L 0 110Q 136.6 150  273.2 120T 546.4 100T 819.6 80T 1092.8 65T 1366 55L 1366 0 Z;M0 0L 0 120Q 136.6 140  273.2 110T 546.4 80T 819.6 95T 1092.8 60T 1366 40L 1366 0 Z"></animate>
+            </path>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Contribution / community -->
+    <section id="contribute" aria-labelledby="contribute-heading" class="relative py-16 md:py-24 bg-gradient-to-b from-rich-black-2/80 to-rich-black-3/95">
+      <div class="mx-auto max-w-5xl px-4">
+        <h2 id="contribute-heading" class="text-2xl md:text-3xl font-semibold text-alice-blue">Contribute to Code Navigator</h2>
+        <p class="mt-2 text-columbia-blue-2">Your ideas help others find clarity. Submit topics, suggest improvements, or share a lesson.</p>
+
+        <!-- Simple contribution options (non-sales) -->
+        <div role="group" aria-label="Contribution actions" class="mt-6 flex flex-wrap gap-3">
+          <a class="inline-flex items-center rounded-lg px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/contribute/submit-idea">Submit an idea</a>
+          <a class="inline-flex items-center rounded-lg px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/contribute/request-topic">Request a topic</a>
+          <a class="inline-flex items-center rounded-lg px-4 py-2 bg-cocoa-brown text-seashell hover:bg-russet focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/contribute/write">Share an article</a>
+        </div>
+
+        <!-- Lightweight contribution form (progressive enhancement friendly) -->
+        <form id="contrib-form" action="/api/contribute" method="post" aria-label="Submit an idea" class="mt-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg shadow-black/30 ring-1 ring-inset ring-white/5 p-4 md:p-6">
+          <fieldset class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <legend class="visually-hidden sr-only">Suggest an idea or topic</legend>
+
+            <div class="md:col-span-1">
+              <label for="contrib-name" class="block text-sm text-columbia-blue">Your name (optional)</label>
+              <input id="contrib-name" name="name" type="text" autocomplete="name" class="mt-1 w-full rounded-xl bg-rich-black/40 text-alice-blue border border-paynes-gray/30 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-paynes-gray/60" />
+            </div>
+
+            <div class="md:col-span-1">
+              <label for="contrib-email" class="block text-sm text-columbia-blue">Email (optional, for follow-up)</label>
+              <input id="contrib-email" name="email" type="email" inputmode="email" autocomplete="email" class="mt-1 w-full rounded-xl bg-rich-black/40 text-alice-blue border border-paynes-gray/30 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-paynes-gray/60" />
+            </div>
+
+            <div class="md:col-span-1">
+              <label for="contrib-type" class="block text-sm text-columbia-blue">I would like to:</label>
+              <select id="contrib-type" name="type" required class="mt-1 w-full rounded-xl bg-rich-black/40 text-alice-blue border border-paynes-gray/30 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-paynes-gray/60">
+                <option value="">Choose…</option>
+                <option value="topic">Request a topic</option>
+                <option value="idea">Submit an idea</option>
+                <option value="article">Share an article</option>
+              </select>
+            </div>
+
+            <div class="md:col-span-2">
+              <label for="contrib-text" class="block text-sm text-columbia-blue">Tell us about it</label>
+              <textarea id="contrib-text" name="text" rows="6" required class="mt-1 w-full rounded-2xl bg-rich-black/40 text-alice-blue border border-paynes-gray/30 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-paynes-gray/60"></textarea>
+            </div>
+
+            <div class="md:col-span-2">
+              <button type="submit" class="inline-flex items-center rounded-xl px-5 py-3 font-medium text-seashell bg-cocoa-brown hover:bg-russet focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60 shadow">Send suggestion</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+
+      <!-- Wave separator to next section (spacer) -->
+      <div aria-hidden="true">
+        <svg id="wave-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 180" preserveAspectRatio="none" class="block w-full h-40 md:h-56 lg:h-72 pointer-events-none">
+          <defs>
+            <linearGradient id="wave-grad-4" x1="0" x2="1" y1="0" y2="0">
+              <stop stop-color="#041017" offset="0"></stop>
+              <stop stop-color="#010304" offset="1"></stop>
+            </linearGradient>
+          </defs>
+          <g transform="translate(0, 180) scale(1,-1)">
+            <path d="" fill="url(#wave-grad-4)" opacity="0.2">
+              <animate attributeName="d" dur="20s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcmod="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="-10s" values="M0 0L 0 120Q 136.6 130  273.2 105T 546.4 90T 819.6 95T 1092.8 75T 1366 55L 1366 0 Z;M0 0L 0 130Q 136.6 120  273.2 110T 546.4 95T 819.6 85T 1092.8 80T 1366 60L 1366 0 Z;M0 0L 0 110Q 136.6 140  273.2 115T 546.4 100T 819.6 90T 1092.8 70T 1366 65L 1366 0 Z;M0 0L 0 120Q 136.6 130  273.2 105T 546.4 90T 819.6 95T 1092.8 75T 1366 55L 1366 0 Z"></animate>
+            </path>
+            <path d="" fill="url(#wave-grad-4)" opacity="0.33">
+              <animate attributeName="d" dur="14s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcmod="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="-8s" values="M0 0L 0 120Q 136.6 130  273.2 105T 546.4 90T 819.6 95T 1092.8 75T 1366 55L 1366 0 Z;M0 0L 0 130Q 136.6 120  273.2 110T 546.4 95T 819.6 85T 1092.8 80T 1366 60L 1366 0 Z;M0 0L 0 110Q 136.6 140  273.2 115T 546.4 100T 819.6 90T 1092.8 70T 1366 65L 1366 0 Z;M0 0L 0 120Q 136.6 130  273.2 105T 546.4 90T 819.6 95T 1092.8 75T 1366 55L 1366 0 Z"></animate>
+            </path>
+            <path d="" fill="url(#wave-grad-4)" opacity="0.5">
+              <animate attributeName="d" dur="10s" repeatCount="indefinite" keyTimes="0;0.333;0.667;1" calcmod="spline" keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1" begin="-6s" values="M0 0L 0 120Q 136.6 130  273.2 105T 546.4 90T 819.6 95T 1092.8 75T 1366 55L 1366 0 Z;M0 0L 0 130Q 136.6 120  273.2 110T 546.4 95T 819.6 85T 1092.8 80T 1366 60L 1366 0 Z;M0 0L 0 110Q 136.6 140  273.2 115T 546.4 100T 819.6 90T 1092.8 70T 1366 65L 1366 0 Z;M0 0L 0 120Q 136.6 130  273.2 105T 546.4 90T 819.6 95T 1092.8 75T 1366 55L 1366 0 Z"></animate>
+            </path>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Optional: quick links for resources / roadmap -->
+    <section id="roadmap" aria-labelledby="roadmap-heading" class="relative py-16 md:py-24 bg-gradient-to-b from-rich-black-3 to-black">
+      <div class="mx-auto max-w-5xl px-4">
+        <h2 id="roadmap-heading" class="text-2xl md:text-3xl font-semibold text-alice-blue">Roadmaps & Resources</h2>
+        <p class="mt-2 text-columbia-blue-2">Starter roadmaps for common career goals (Frontend, Backend, DevOps, etc.).</p>
+        <ul class="mt-6 space-y-2">
+          <li><a class="text-columbia-blue hover:text-alice-blue underline-offset-2 hover:underline" href="/roadmaps/frontend">Frontend roadmap</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue underline-offset-2 hover:underline" href="/roadmaps/backend">Backend roadmap</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue underline-offset-2 hover:underline" href="/resources">Curated tools & books</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site footer -->
+  <footer role="contentinfo" aria-labelledby="footer-heading" class="border-t border-paynes-gray/30 bg-rich-black-3/90">
+    <div class="mx-auto max-w-7xl px-4 py-10">
+      <h2 id="footer-heading" class="visually-hidden sr-only">Footer</h2>
+
+      <section aria-labelledby="about">
+        <h3 id="about" class="text-columbia-blue text-sm uppercase tracking-wide">About</h3>
+        <p class="mt-2 text-columbia-blue-2">Code Navigator — a safe, welcoming space for developers to grow. Learn, build, and contribute.</p>
+      </section>
+
+      <nav aria-label="Footer" role="navigation" class="mt-6">
+        <ul class="flex flex-wrap gap-4">
+          <li><a class="text-columbia-blue hover:text-alice-blue" href="/privacy">Privacy</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue" href="/terms">Terms</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue" href="/contact">Contact</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue" href="https://github.com/your-repo" rel="noopener">GitHub</a></li>
+        </ul>
+      </nav>
+
+      <p class="mt-6 text-sm text-columbia-blue-2">&copy; <span id="year">2025</span> Code Navigator</p>
+    </div>
+  </footer>
+
+  <!-- Minimal accessibility helpers -->
+  <noscript>
+    <div role="status" class="mx-auto max-w-5xl my-4 rounded-md bg-white/10 p-4 text-alice-blue">JavaScript is disabled. Some interactions may be limited but core content remains available.</div>
+  </noscript>
+
+  <!-- Note: all interactive enhancements (cursor animation, search autocomplete, wave decorations, aria-live feedback, focus outlines, motion-reduce handling, etc.) should be implemented progressively with JS/CSS while preserving the semantic markup above. -->
+</body>
+</html>
