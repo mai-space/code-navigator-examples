@@ -509,6 +509,9 @@
 
       const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+      // Global timer management
+      window.menuHoverTimers = window.menuHoverTimers || [];
+
       /**
        * Utilities
        */
@@ -558,6 +561,11 @@
           });
           closePanel(button, panel);
         }
+        // Clear any pending hover timers
+        if (window.menuHoverTimers) {
+          window.menuHoverTimers.forEach(timer => clearTimeout(timer));
+          window.menuHoverTimers = [];
+        }
       };
 
       const focusMove = (fromBtn, direction) => {
@@ -576,7 +584,14 @@
           e.preventDefault();
           const willOpen = !isOpen(button);
           closeAllMenus();
-          if (willOpen) openPanel(button, panel);
+          if (willOpen) {
+            openPanel(button, panel);
+            // Focus first focusable item in the panel
+            const firstFocusable = panel.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+            if (firstFocusable) {
+              setTimeout(() => firstFocusable.focus(), 0);
+            }
+          }
         });
 
         // Keyboard on top-level button
@@ -586,10 +601,12 @@
             if (!isOpen(button)) {
               closeAllMenus();
               openPanel(button, panel);
+              // Focus first focusable in panel
+              const firstFocusable = panel.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+              if (firstFocusable) {
+                setTimeout(() => firstFocusable.focus(), 0);
+              }
             }
-            // Focus first focusable in panel
-            const firstFocusable = panel.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
-            firstFocusable?.focus();
           } else if (e.key === 'Escape') {
             closePanel(button, panel);
             button.focus();
@@ -603,17 +620,53 @@
         // Hover open/close for pointer devices
         if (hasHover) {
           let hoverTimer = 0;
+          let isHovering = false;
+          
           root.addEventListener('mouseenter', () => {
-            window.clearTimeout(hoverTimer);
+            // Clear all existing timers
+            window.menuHoverTimers.forEach(timer => clearTimeout(timer));
+            window.menuHoverTimers = [];
+            
+            isHovering = true;
             closeAllMenus(root);
             openPanel(button, panel);
           });
+          
           root.addEventListener('mouseleave', () => {
+            isHovering = false;
             hoverTimer = window.setTimeout(() => {
-              closePanel(button, panel);
-            }, 120);
+              // Only close if not hovering and not focused
+              if (!isHovering && document.activeElement !== button) {
+                closePanel(button, panel);
+              }
+            }, 300); // Increased from 120ms to 300ms for better UX
+            window.menuHoverTimers.push(hoverTimer);
           });
         }
+
+        // Add keyboard navigation to panel
+        panel.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closePanel(button, panel);
+            button.focus();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const focusables = Array.from(panel.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'));
+            const currentIndex = focusables.indexOf(document.activeElement);
+            if (currentIndex > 0) {
+              focusables[currentIndex - 1].focus();
+            } else {
+              button.focus();
+            }
+          } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const focusables = Array.from(panel.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'));
+            const currentIndex = focusables.indexOf(document.activeElement);
+            if (currentIndex < focusables.length - 1) {
+              focusables[currentIndex + 1].focus();
+            }
+          }
+        });
 
         // Manage nested submenus inside this root
         const subRoots = selectAll('[data-submenu-root]', panel);
@@ -631,16 +684,29 @@
               const { button: sb, panel: sp } = getSubmenuParts(sib);
               closePanel(sb, sp);
             });
-            if (willOpen) openPanel(subBtn, subPanel); else closePanel(subBtn, subPanel);
+            if (willOpen) {
+              openPanel(subBtn, subPanel);
+              // Focus first focusable item in the subpanel
+              const firstFocusable = subPanel.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+              if (firstFocusable) {
+                setTimeout(() => firstFocusable.focus(), 0);
+              }
+            } else {
+              closePanel(subBtn, subPanel);
+            }
           });
 
           // Keyboard
           subBtn.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight' || e.key === 'ArrowDown') {
               e.preventDefault();
-              if (!isOpen(subBtn)) openPanel(subBtn, subPanel);
-              const firstFocusable = subPanel.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
-              firstFocusable?.focus();
+              if (!isOpen(subBtn)) {
+                openPanel(subBtn, subPanel);
+                const firstFocusable = subPanel.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+                if (firstFocusable) {
+                  setTimeout(() => firstFocusable.focus(), 0);
+                }
+              }
             } else if (e.key === 'ArrowLeft' || e.key === 'Escape') {
               e.preventDefault();
               closePanel(subBtn, subPanel);
@@ -648,11 +714,41 @@
             }
           });
 
+          // Add keyboard navigation to subpanel
+          subPanel.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+              closePanel(subBtn, subPanel);
+              subBtn.focus();
+            } else if (e.key === 'ArrowUp') {
+              e.preventDefault();
+              const focusables = Array.from(subPanel.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'));
+              const currentIndex = focusables.indexOf(document.activeElement);
+              if (currentIndex > 0) {
+                focusables[currentIndex - 1].focus();
+              } else {
+                subBtn.focus();
+              }
+            } else if (e.key === 'ArrowDown') {
+              e.preventDefault();
+              const focusables = Array.from(subPanel.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'));
+              const currentIndex = focusables.indexOf(document.activeElement);
+              if (currentIndex < focusables.length - 1) {
+                focusables[currentIndex + 1].focus();
+              }
+            }
+          });
+
           // Hover for pointer devices
           if (hasHover) {
             let subHoverTimer = 0;
+            let isSubHovering = false;
+            
             subRoot.addEventListener('mouseenter', () => {
-              window.clearTimeout(subHoverTimer);
+              // Clear all existing timers
+              window.menuHoverTimers.forEach(timer => clearTimeout(timer));
+              window.menuHoverTimers = [];
+              
+              isSubHovering = true;
               // Close siblings
               selectAll('[data-submenu-root]', subRoot.parentElement).forEach((sib) => {
                 if (sib === subRoot) return;
@@ -661,10 +757,16 @@
               });
               openPanel(subBtn, subPanel);
             });
+            
             subRoot.addEventListener('mouseleave', () => {
+              isSubHovering = false;
               subHoverTimer = window.setTimeout(() => {
-                closePanel(subBtn, subPanel);
-              }, 120);
+                // Only close if not hovering and not focused
+                if (!isSubHovering && document.activeElement !== subBtn) {
+                  closePanel(subBtn, subPanel);
+                }
+              }, 300); // Increased from 120ms to 300ms for better UX
+              window.menuHoverTimers.push(subHoverTimer);
             });
           }
         }
@@ -684,6 +786,9 @@
             navToggle.setAttribute('aria-expanded', 'false');
             navToggle.setAttribute('aria-label', 'Open menu');
           }
+          // Clear any pending hover timers
+          window.menuHoverTimers.forEach(timer => clearTimeout(timer));
+          window.menuHoverTimers = [];
         }
       });
 
@@ -720,10 +825,24 @@
         for (const root of menuRoots) {
           const { button, panel } = getRootParts(root);
           if (button) button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+          if (panel) {
+            if (expanded) {
+              panel.classList.remove('hidden');
+            } else {
+              panel.classList.add('hidden');
+            }
+          }
           const subRoots = selectAll('[data-submenu-root]', panel);
           for (const subRoot of subRoots) {
-            const { button: sb } = getSubmenuParts(subRoot);
+            const { button: sb, panel: sp } = getSubmenuParts(subRoot);
             if (sb) sb.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+            if (sp) {
+              if (expanded) {
+                sp.classList.remove('hidden');
+              } else {
+                sp.classList.add('hidden');
+              }
+            }
           }
         }
       };
@@ -734,9 +853,10 @@
         nav.setAttribute('data-open', 'true');
         navToggle.setAttribute('aria-expanded', 'true');
         navToggle.setAttribute('aria-label', 'Close menu');
-        // Ensure panels are visible in mobile stacked mode
+        // Close all menus first to ensure clean state
         closeAllMenus();
-        setAllMenuExpandedState(true);
+        // Don't auto-expand all menus in mobile - let users click to expand
+        // setAllMenuExpandedState(true);
         // Focus first focusable item inside nav
         const focusables = getFocusable(nav);
         const firstFocusable = focusables.find((el) => el instanceof HTMLAnchorElement || el instanceof HTMLButtonElement) || focusables[0];
@@ -750,6 +870,8 @@
         nav.setAttribute('data-open', 'false');
         navToggle.setAttribute('aria-expanded', 'false');
         navToggle.setAttribute('aria-label', 'Open menu');
+        // Close all menus and submenus
+        closeAllMenus();
         setAllMenuExpandedState(false);
         document.documentElement.style.overflow = '';
         if (restoreFocus) navToggle.focus();
