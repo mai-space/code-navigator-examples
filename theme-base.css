@@ -241,3 +241,72 @@ button:not([class]):active, input[type="submit"]:not([class]):active { transform
 
 /* Focus defaults (warm override for better keyboard visibility) */
 ::focus-visible { outline: 3px solid var(--warm-cocoa); outline-offset: 3px; }
+
+/* ---------------------------------------------
+   Navigation responsive helpers (vanilla CSS)
+   - Hide nav list on mobile until opened
+   - Show hamburger on mobile; hide on desktop
+   - Fullscreen overlay on mobile when open
+   --------------------------------------------- */
+
+/* Scope to header for safety */
+header[role="banner"] {
+  /* container tweaks if ever needed */
+}
+
+/* Mobile-first: hide primary nav by default, show toggle */
+header[role="banner"] #primary-nav {
+  position: static;
+}
+
+header[role="banner"] #primary-nav > ul {
+  display: none; /* hidden until opened */
+}
+
+header[role="banner"] .mobile-toggle {
+  display: inline-flex;
+  position: relative;
+  z-index: 70; /* stay above mobile overlay */
+}
+
+/* When mobile menu is open */
+header[role="banner"] #primary-nav[data-open="true"] {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(7, 29, 41, 0.96);
+  backdrop-filter: blur(10px);
+}
+
+header[role="banner"] #primary-nav[data-open="true"] > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 5rem 1rem 1.25rem; /* space for header area */
+}
+
+/* Make mega panels position static on mobile so they stack */
+header[role="banner"] #primary-nav[data-open="true"] [data-menu-panel] {
+  position: static !important;
+  display: block !important;
+  transform: none !important;
+  width: auto !important;
+  margin-top: 0.5rem;
+}
+
+/* Likewise for nested submenu panels */
+header[role="banner"] #primary-nav[data-open="true"] [data-submenu-panel] {
+  position: static !important;
+  display: block !important;
+  width: auto !important;
+  margin-left: 0 !important;
+  margin-top: 0.25rem;
+}
+
+/* Desktop (≥768px): show horizontal list and hide toggle */
+@media (min-width: 768px) {
+  header[role="banner"] .mobile-toggle { display: none; }
+  header[role="banner"] #primary-nav { position: static; background: transparent; }
+  header[role="banner"] #primary-nav > ul { display: flex; }
+  header[role="banner"] #primary-nav [data-menu-panel] { display: none; }
+}

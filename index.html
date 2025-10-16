@@ -26,8 +26,23 @@
         </div>
       </div>
 
+      <!-- Mobile hamburger toggle (shown on small screens only) -->
+      <button
+        id="nav-toggle"
+        class="mobile-toggle inline-flex items-center justify-center rounded px-3 py-2 text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="primary-nav"
+        aria-expanded="false"
+      >
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <span class="sr-only">Menu</span>
+      </button>
+
       <!-- Primary navigation (mega menu) -->
-      <nav aria-label="Primary" role="navigation" class="relative">
+      <nav id="primary-nav" aria-label="Primary" role="navigation" class="relative" data-open="false">
         <ul class="flex items-center gap-2 md:gap-4 text-sm md:text-base">
           <!-- Topics: Mega menu with nested flyouts (multi-level) -->
           <li class="relative" data-menu-root>
@@ -528,6 +543,8 @@
        * Top-level menus
        */
       const menuRoots = selectAll('[data-menu-root]');
+      const nav = document.getElementById('primary-nav');
+      const navToggle = document.getElementById('nav-toggle');
       const topButtons = menuRoots.map(getRootParts).map(({ button }) => button).filter(Boolean);
 
       const closeAllMenus = (exceptRoot = null) => {
@@ -658,7 +675,16 @@
         const target = e.target;
         if (!isElement(target)) return;
         const clickedInside = menuRoots.some((root) => root.contains(target));
-        if (!clickedInside) closeAllMenus();
+        const clickedToggle = navToggle && navToggle.contains(target);
+        const clickedInsideNav = nav && nav.contains(target);
+        if (!clickedInside && !clickedInsideNav && !clickedToggle) {
+          closeAllMenus();
+          if (nav) nav.setAttribute('data-open', 'false');
+          if (navToggle) {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Open menu');
+          }
+        }
       });
 
       // Close on Escape globally
@@ -674,8 +700,103 @@
             closedAny = true;
           }
         }
+        // Also close mobile nav if open
+        if (nav && nav.getAttribute('data-open') === 'true') {
+          nav.setAttribute('data-open', 'false');
+          if (navToggle) {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Open menu');
+          }
+          if (!closedAny) closedAny = true;
+        }
         if (closedAny) e.stopPropagation();
       });
+
+      // Mobile hamburger toggle behavior
+      const getFocusable = (root) => root ? Array.from(root.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter((el) => !el.hasAttribute('disabled')) : [];
+      let prevActiveElement = null;
+
+      const setAllMenuExpandedState = (expanded) => {
+        for (const root of menuRoots) {
+          const { button, panel } = getRootParts(root);
+          if (button) button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+          const subRoots = selectAll('[data-submenu-root]', panel);
+          for (const subRoot of subRoots) {
+            const { button: sb } = getSubmenuParts(subRoot);
+            if (sb) sb.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+          }
+        }
+      };
+
+      const openMobileNav = () => {
+        if (!nav || !navToggle) return;
+        prevActiveElement = document.activeElement;
+        nav.setAttribute('data-open', 'true');
+        navToggle.setAttribute('aria-expanded', 'true');
+        navToggle.setAttribute('aria-label', 'Close menu');
+        // Ensure panels are visible in mobile stacked mode
+        closeAllMenus();
+        setAllMenuExpandedState(true);
+        // Focus first focusable item inside nav
+        const focusables = getFocusable(nav);
+        const firstFocusable = focusables.find((el) => el instanceof HTMLAnchorElement || el instanceof HTMLButtonElement) || focusables[0];
+        firstFocusable?.focus();
+        // Prevent page scroll behind
+        document.documentElement.style.overflow = 'hidden';
+      };
+
+      const closeMobileNav = ({ restoreFocus } = { restoreFocus: true }) => {
+        if (!nav || !navToggle) return;
+        nav.setAttribute('data-open', 'false');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Open menu');
+        setAllMenuExpandedState(false);
+        document.documentElement.style.overflow = '';
+        if (restoreFocus) navToggle.focus();
+      };
+
+      const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
+
+      if (navToggle && nav) {
+        navToggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          const open = nav.getAttribute('data-open') === 'true';
+          if (open) closeMobileNav(); else openMobileNav();
+        });
+
+        // Close nav when selecting a link (mobile)
+        nav.addEventListener('click', (e) => {
+          const target = e.target;
+          if (!isElement(target)) return;
+          if (nav.getAttribute('data-open') === 'true' && target.closest('a')) {
+            setTimeout(() => closeMobileNav({ restoreFocus: false }), 0);
+          }
+        });
+
+        // Trap focus when open (very lightweight)
+        document.addEventListener('keydown', (e) => {
+          if (e.key !== 'Tab') return;
+          if (!nav || nav.getAttribute('data-open') !== 'true') return;
+          const focusables = getFocusable(nav);
+          if (focusables.length === 0) return;
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        });
+
+        // Close mobile nav on resize to desktop
+        window.addEventListener('resize', () => {
+          if (isDesktop() && nav.getAttribute('data-open') === 'true') {
+            closeMobileNav({ restoreFocus: false });
+          }
+        });
+      }
     })();
   </script>
 </body>
