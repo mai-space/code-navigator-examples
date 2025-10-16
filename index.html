@@ -26,13 +26,148 @@
         </div>
       </div>
 
-      <!-- Primary navigation (minimal) -->
-      <nav aria-label="Primary" role="navigation">
-        <ul class="flex items-center gap-4 text-sm md:text-base">
-          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/50 rounded px-2 py-1" href="#topics">Topics</a></li>
-          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/50 rounded px-2 py-1" href="#courses">Courses</a></li>
-          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/50 rounded px-2 py-1" href="#contribute">Contribute</a></li>
-          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/50 rounded px-2 py-1" href="#about">About</a></li>
+      <!-- Primary navigation (mega menu) -->
+      <nav aria-label="Primary" role="navigation" class="relative">
+        <ul class="flex items-center gap-2 md:gap-4 text-sm md:text-base">
+          <!-- Topics: Mega menu with nested flyouts (multi-level) -->
+          <li class="relative" data-menu-root>
+            <button
+              type="button"
+              class="inline-flex items-center gap-1 rounded px-2 py-1 text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60"
+              aria-expanded="false"
+              aria-controls="menu-topics"
+              data-menu-button
+            >
+              <span>Topics</span>
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" class="opacity-80"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"/></svg>
+            </button>
+
+            <!-- Mega panel -->
+            <div
+              id="menu-topics"
+              role="region"
+              aria-label="Topics menu"
+              class="mega-panel hidden absolute left-1/2 top-full z-30 mt-2 w-[min(95vw,64rem)] -translate-x-1/2 rounded-2xl border border-white/10 bg-rich-black/90 backdrop-blur-md shadow-xl ring-1 ring-inset ring-cocoa-brown/20"
+              data-menu-panel
+            >
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
+                <!-- Column: Development -->
+                <section aria-labelledby="topics-dev" class="space-y-2">
+                  <h4 id="topics-dev" class="text-columbia-blue text-xs uppercase tracking-wide">Development</h4>
+                  <ul role="list" class="space-y-1">
+                    <li class="relative" data-submenu-root>
+                      <button
+                        type="button"
+                        class="flex w-full items-center justify-between rounded px-2 py-1 text-left text-alice-blue/90 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60"
+                        aria-expanded="false"
+                        aria-controls="submenu-frontend"
+                        data-submenu-button
+                      >
+                        <span>Frontend</span>
+                        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 20 20" fill="currentColor" class="opacity-80"><path d="M7.21 14.77a.75.75 0 0 1-.02-1.06L10.94 10 7.19 6.29a.75.75 0 0 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.04 0Z"/></svg>
+                      </button>
+                      <!-- Level 3 flyout for Frontend -->
+                      <div
+                        id="submenu-frontend"
+                        class="hidden lg:absolute lg:left-full lg:top-0 lg:z-40 lg:ml-2 lg:min-w-[14rem] rounded-xl border border-white/10 bg-rich-black/95 p-3 shadow-lg"
+                        data-submenu-panel
+                      >
+                        <ul role="list" class="space-y-1">
+                          <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/frontend/react">React</a></li>
+                          <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/frontend/vue">Vue</a></li>
+                          <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/frontend/css">CSS</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li class="relative" data-submenu-root>
+                      <button
+                        type="button"
+                        class="flex w-full items-center justify-between rounded px-2 py-1 text-left text-alice-blue/90 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60"
+                        aria-expanded="false"
+                        aria-controls="submenu-backend"
+                        data-submenu-button
+                      >
+                        <span>Backend</span>
+                        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 20 20" fill="currentColor" class="opacity-80"><path d="M7.21 14.77a.75.75 0 0 1-.02-1.06L10.94 10 7.19 6.29a.75.75 0 0 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.04 0Z"/></svg>
+                      </button>
+                      <div
+                        id="submenu-backend"
+                        class="hidden lg:absolute lg:left-full lg:top-0 lg:z-40 lg:ml-2 lg:min-w-[14rem] rounded-xl border border-white/10 bg-rich-black/95 p-3 shadow-lg"
+                        data-submenu-panel
+                      >
+                        <ul role="list" class="space-y-1">
+                          <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/backend/node">Node.js</a></li>
+                          <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/backend/python">Python</a></li>
+                          <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/backend/databases">Databases</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                    <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/basics">Basics</a></li>
+                  </ul>
+                </section>
+
+                <!-- Column: DevOps -->
+                <section aria-labelledby="topics-devops" class="space-y-2">
+                  <h4 id="topics-devops" class="text-columbia-blue text-xs uppercase tracking-wide">DevOps</h4>
+                  <ul role="list" class="space-y-1">
+                    <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/devops/cicd">CI/CD</a></li>
+                    <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/devops/docker">Docker</a></li>
+                    <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/devops/kubernetes">Kubernetes</a></li>
+                  </ul>
+                </section>
+
+                <!-- Column: Quality -->
+                <section aria-labelledby="topics-quality" class="space-y-2">
+                  <h4 id="topics-quality" class="text-columbia-blue text-xs uppercase tracking-wide">Quality</h4>
+                  <ul role="list" class="space-y-1">
+                    <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/quality/testing">Testing</a></li>
+                    <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/quality/security">Security</a></li>
+                    <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/accessibility">Accessibility</a></li>
+                  </ul>
+                </section>
+
+                <!-- Column: Resources -->
+                <section aria-labelledby="topics-resources" class="space-y-2">
+                  <h4 id="topics-resources" class="text-columbia-blue text-xs uppercase tracking-wide">Resources</h4>
+                  <ul role="list" class="space-y-1">
+                    <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/roadmaps/frontend">Frontend roadmap</a></li>
+                    <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/roadmaps/backend">Backend roadmap</a></li>
+                    <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/resources">Curated tools & books</a></li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </li>
+
+          <!-- Courses (simple dropdown) -->
+          <li class="relative" data-menu-root>
+            <button
+              type="button"
+              class="inline-flex items-center gap-1 rounded px-2 py-1 text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60"
+              aria-expanded="false"
+              aria-controls="menu-courses"
+              data-menu-button
+            >
+              <span>Courses</span>
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" class="opacity-80"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"/></svg>
+            </button>
+            <div
+              id="menu-courses"
+              role="region"
+              aria-label="Courses menu"
+              class="hidden absolute left-0 top-full z-30 mt-2 min-w-[16rem] rounded-xl border border-white/10 bg-rich-black/90 backdrop-blur-md p-3 shadow-lg ring-1 ring-inset ring-cocoa-brown/20"
+              data-menu-panel
+            >
+              <ul role="list" class="space-y-1">
+                <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="#courses">All courses</a></li>
+                <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/courses/clean-code">Clean Code</a></li>
+                <li><a class="block rounded px-2 py-1 text-columbia-blue hover:text-alice-blue hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/courses/security">Web Security</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60 rounded px-2 py-1" href="#contribute">Contribute</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60 rounded px-2 py-1" href="#about">About</a></li>
         </ul>
       </nav>
     </div>
@@ -352,5 +487,196 @@
   </noscript>
 
   <!-- Note: all interactive enhancements (cursor animation, search autocomplete, wave decorations, aria-live feedback, focus outlines, motion-reduce handling, etc.) should be implemented progressively with JS/CSS while preserving the semantic markup above. -->
+
+  <script>
+    (function () {
+      'use strict';
+
+      const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      /**
+       * Utilities
+       */
+      const selectAll = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+      const isElement = (value) => value && value.nodeType === 1;
+
+      const getRootParts = (rootEl) => {
+        const button = rootEl.querySelector('[data-menu-button]');
+        const panel = rootEl.querySelector('[data-menu-panel]');
+        return { button, panel };
+      };
+
+      const getSubmenuParts = (subRootEl) => {
+        const button = subRootEl.querySelector('[data-submenu-button]');
+        const panel = subRootEl.querySelector('[data-submenu-panel]');
+        return { button, panel };
+      };
+
+      const isOpen = (btn) => btn?.getAttribute('aria-expanded') === 'true';
+      const openPanel = (btn, panel) => {
+        if (!btn || !panel) return;
+        btn.setAttribute('aria-expanded', 'true');
+        panel.classList.remove('hidden');
+      };
+      const closePanel = (btn, panel) => {
+        if (!btn || !panel) return;
+        btn.setAttribute('aria-expanded', 'false');
+        panel.classList.add('hidden');
+      };
+
+      /**
+       * Top-level menus
+       */
+      const menuRoots = selectAll('[data-menu-root]');
+      const topButtons = menuRoots.map(getRootParts).map(({ button }) => button).filter(Boolean);
+
+      const closeAllMenus = (exceptRoot = null) => {
+        for (const root of menuRoots) {
+          if (exceptRoot && root === exceptRoot) continue;
+          const { button, panel } = getRootParts(root);
+          // Close nested submenus too
+          selectAll('[data-submenu-root]', root).forEach((subRoot) => {
+            const { button: sb, panel: sp } = getSubmenuParts(subRoot);
+            closePanel(sb, sp);
+          });
+          closePanel(button, panel);
+        }
+      };
+
+      const focusMove = (fromBtn, direction) => {
+        const index = topButtons.indexOf(fromBtn);
+        if (index === -1) return;
+        const nextIndex = (index + (direction === 'next' ? 1 : -1) + topButtons.length) % topButtons.length;
+        topButtons[nextIndex]?.focus();
+      };
+
+      for (const root of menuRoots) {
+        const { button, panel } = getRootParts(root);
+        if (!button || !panel) continue;
+
+        // Click to toggle
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          const willOpen = !isOpen(button);
+          closeAllMenus();
+          if (willOpen) openPanel(button, panel);
+        });
+
+        // Keyboard on top-level button
+        button.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (!isOpen(button)) {
+              closeAllMenus();
+              openPanel(button, panel);
+            }
+            // Focus first focusable in panel
+            const firstFocusable = panel.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+            firstFocusable?.focus();
+          } else if (e.key === 'Escape') {
+            closePanel(button, panel);
+            button.focus();
+          } else if (e.key === 'ArrowRight') {
+            focusMove(button, 'next');
+          } else if (e.key === 'ArrowLeft') {
+            focusMove(button, 'prev');
+          }
+        });
+
+        // Hover open/close for pointer devices
+        if (hasHover) {
+          let hoverTimer = 0;
+          root.addEventListener('mouseenter', () => {
+            window.clearTimeout(hoverTimer);
+            closeAllMenus(root);
+            openPanel(button, panel);
+          });
+          root.addEventListener('mouseleave', () => {
+            hoverTimer = window.setTimeout(() => {
+              closePanel(button, panel);
+            }, 120);
+          });
+        }
+
+        // Manage nested submenus inside this root
+        const subRoots = selectAll('[data-submenu-root]', panel);
+        for (const subRoot of subRoots) {
+          const { button: subBtn, panel: subPanel } = getSubmenuParts(subRoot);
+          if (!subBtn || !subPanel) continue;
+
+          // Click toggle
+          subBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const willOpen = !isOpen(subBtn);
+            // Close siblings
+            selectAll('[data-submenu-root]', subRoot.parentElement).forEach((sib) => {
+              if (sib === subRoot) return;
+              const { button: sb, panel: sp } = getSubmenuParts(sib);
+              closePanel(sb, sp);
+            });
+            if (willOpen) openPanel(subBtn, subPanel); else closePanel(subBtn, subPanel);
+          });
+
+          // Keyboard
+          subBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+              e.preventDefault();
+              if (!isOpen(subBtn)) openPanel(subBtn, subPanel);
+              const firstFocusable = subPanel.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+              firstFocusable?.focus();
+            } else if (e.key === 'ArrowLeft' || e.key === 'Escape') {
+              e.preventDefault();
+              closePanel(subBtn, subPanel);
+              subBtn.focus();
+            }
+          });
+
+          // Hover for pointer devices
+          if (hasHover) {
+            let subHoverTimer = 0;
+            subRoot.addEventListener('mouseenter', () => {
+              window.clearTimeout(subHoverTimer);
+              // Close siblings
+              selectAll('[data-submenu-root]', subRoot.parentElement).forEach((sib) => {
+                if (sib === subRoot) return;
+                const { button: sb, panel: sp } = getSubmenuParts(sib);
+                closePanel(sb, sp);
+              });
+              openPanel(subBtn, subPanel);
+            });
+            subRoot.addEventListener('mouseleave', () => {
+              subHoverTimer = window.setTimeout(() => {
+                closePanel(subBtn, subPanel);
+              }, 120);
+            });
+          }
+        }
+      }
+
+      // Close on outside click
+      document.addEventListener('pointerdown', (e) => {
+        const target = e.target;
+        if (!isElement(target)) return;
+        const clickedInside = menuRoots.some((root) => root.contains(target));
+        if (!clickedInside) closeAllMenus();
+      });
+
+      // Close on Escape globally
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+        // Find any open root and close
+        let closedAny = false;
+        for (const root of menuRoots) {
+          const { button, panel } = getRootParts(root);
+          if (isOpen(button)) {
+            closePanel(button, panel);
+            button?.focus();
+            closedAny = true;
+          }
+        }
+        if (closedAny) e.stopPropagation();
+      });
+    })();
+  </script>
 </body>
 </html>
