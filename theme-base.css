@@ -77,8 +77,8 @@ a:not([class]) {
 a:not([class]):hover { color: var(--cb-alice); }
 
 a:not([class]):focus-visible {
-  outline: 2px solid rgba(68, 102, 122, 0.6);
-  outline-offset: 2px;
+  outline: 3px solid var(--warm-cocoa);
+  outline-offset: 3px;
 }
 
 /* Lists */
@@ -238,3 +238,6 @@ button:not([class]):active, input[type="submit"]:not([class]):active { transform
     display: none !important;
   }
 }
+
+/* Focus defaults (warm override for better keyboard visibility) */
+::focus-visible { outline: 3px solid var(--warm-cocoa); outline-offset: 3px; }

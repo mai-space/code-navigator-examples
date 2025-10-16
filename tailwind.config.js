@@ -92,6 +92,15 @@ module.exports = {
         'warm-gradient-radial':
           'radial-gradient(#fbf0e9ff, #f7dfd1ff, #ebac87ff, #da6725ff, #743714ff, #271307ff, #0d0602ff)',
       },
+      ringColor: {
+        DEFAULT: '#da6725',
+      },
+      ringOpacity: {
+        DEFAULT: '0.7',
+        60: '0.6',
+        70: '0.7',
+        80: '0.8',
+      },
     },
   },
   plugins: [],

@@ -16,7 +16,7 @@
   <header role="banner" aria-labelledby="site-title" class="sticky top-0 z-40 bg-rich-black/40 backdrop-blur supports-[backdrop-filter]:bg-rich-black/40 border-b border-paynes-gray/30">
     <div class="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div id="brand" role="img" aria-label="Code Navigator logo: stylized compass" class="h-10 w-10 rounded-full bg-gradient-to-br from-paynes-gray to-prussian-blue shadow-inner shadow-black/40 ring-1 ring-white/10">
+        <div id="brand" role="img" aria-label="Code Navigator logo: stylized compass" class="h-10 w-10 rounded-full bg-gradient-to-br from-paynes-gray to-prussian-blue shadow-inner shadow-black/40 ring-1 ring-cocoa-brown/10">
             🧭
         </div>
         <div>
@@ -29,10 +29,10 @@
       <!-- Primary navigation (minimal) -->
       <nav aria-label="Primary" role="navigation">
         <ul class="flex items-center gap-4 text-sm md:text-base">
-          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/50 rounded px-2 py-1" href="#topics">Topics</a></li>
-          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/50 rounded px-2 py-1" href="#courses">Courses</a></li>
-          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/50 rounded px-2 py-1" href="#contribute">Contribute</a></li>
-          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/50 rounded px-2 py-1" href="#about">About</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/50 rounded px-2 py-1" href="#topics">Topics</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/50 rounded px-2 py-1" href="#courses">Courses</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/50 rounded px-2 py-1" href="#contribute">Contribute</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/50 rounded px-2 py-1" href="#about">About</a></li>
         </ul>
       </nav>
     </div>
@@ -41,12 +41,12 @@
   <!-- Main content -->
   <main id="main" role="main" aria-labelledby="main-heading" class="relative z-0">
     <!-- Hero / Search-first -->
-    <section aria-labelledby="main-heading" id="hero" class="relative py-16 md:py-24 bg-gradient-to-b from-rich-black/0 to-rich-black/30">
+    <section aria-labelledby="main-heading" id="hero" class="relative py-16 md:py-24" style="background: linear-gradient(to bottom, #0d364e, #071d29);">
       <div class="mx-auto max-w-5xl px-4">
         <h2 id="main-heading" class="visually-hidden sr-only">Explore Code Navigator</h2>
 
         <!-- Search form (prominent, accessible) -->
-        <form role="search" aria-label="Search Code Navigator" id="site-search" action="/search" method="get" class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg shadow-black/30 ring-1 ring-inset ring-white/5 p-4 md:p-6">
+        <form role="search" aria-label="Search Code Navigator" id="site-search" action="/search" method="get" class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg shadow-black/30 ring-1 ring-inset ring-cocoa-brown/5 p-4 md:p-6">
           <label for="q" class="visually-hidden sr-only">Search topics, concepts, or best practices</label>
           <div class="flex flex-col md:flex-row gap-3">
             <input
@@ -57,7 +57,7 @@
               placeholder="Search topics, concepts, or best practices…"
               aria-describedby="search-hint"
               required
-              class="flex-1 rounded-xl bg-rich-black/40 text-alice-blue placeholder:columbia-blue-2/70 border border-paynes-gray/30 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-paynes-gray/60"
+              class="flex-1 rounded-xl bg-rich-black/40 text-alice-blue placeholder:columbia-blue-2/70 border border-paynes-gray/30 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cocoa-brown/60"
             />
             <button type="submit" aria-label="Search" class="self-start md:self-auto inline-flex items-center justify-center rounded-xl px-5 py-3 font-medium text-seashell bg-cocoa-brown hover:bg-russet focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60 shadow">Search</button>
           </div>
@@ -68,14 +68,14 @@
         <div id="quick-explore" aria-labelledby="explore-heading" class="mt-8">
           <h3 id="explore-heading" class="text-columbia-blue text-sm uppercase tracking-wide">Explore by category</h3>
           <ul role="list" aria-label="Main topic categories" class="mt-3 flex flex-wrap gap-2">
-            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/basics" aria-describedby="desc-basics">Basics</a></li>
-            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/accessibility" aria-describedby="desc-accessibility">Accessibility</a></li>
-            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/seo" aria-describedby="desc-seo">SEO</a></li>
-            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/security" aria-describedby="desc-security">Security</a></li>
-            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/devops" aria-describedby="desc-devops">DevOps</a></li>
-            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/best-practices" aria-describedby="desc-bestpractices">Best Practices</a></li>
-            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/patterns" aria-describedby="desc-patterns">Patterns</a></li>
-            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/topics/leadership" aria-describedby="desc-leadership">Leadership</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/basics" aria-describedby="desc-basics">Basics</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/accessibility" aria-describedby="desc-accessibility">Accessibility</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/seo" aria-describedby="desc-seo">SEO</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/security" aria-describedby="desc-security">Security</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/devops" aria-describedby="desc-devops">DevOps</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/best-practices" aria-describedby="desc-bestpractices">Best Practices</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/patterns" aria-describedby="desc-patterns">Patterns</a></li>
+            <li><a class="inline-flex items-center rounded-full px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/leadership" aria-describedby="desc-leadership">Leadership</a></li>
           </ul>
 
           <!-- Hidden short descriptions for assistive tech -->
@@ -96,8 +96,8 @@
       <div aria-hidden="true">
         <svg id="wave-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 180" preserveAspectRatio="none" class="block w-full h-40 md:h-56 lg:h-72 pointer-events-none">
           <defs>
-            <linearGradient id="wave-grad-1" x1="0" x2="1" y1="0" y2="0">
-              <stop stop-color="#0d364e" offset="0"></stop>
+            <linearGradient id="wave-grad-1" x1="0" y1="0" x2="0" y2="1">
+              <stop stop-color="#071d29" offset="0"></stop>
               <stop stop-color="#071d29" offset="1"></stop>
             </linearGradient>
           </defs>
@@ -117,7 +117,7 @@
     </section>
 
     <!-- Topic overview grid -->
-    <section id="topics" aria-labelledby="topics-heading" class="relative py-16 md:py-24 bg-gradient-to-b from-rich-black/30 to-rich-black-2/60">
+    <section id="topics" aria-labelledby="topics-heading" class="relative py-16 md:py-24" style="background: linear-gradient(to bottom, #071d29, #061720);">
       <div class="mx-auto max-w-6xl px-4">
         <h2 id="topics-heading" class="text-2xl md:text-3xl font-semibold text-alice-blue">Topics</h2>
         <p class="lead mt-2 text-columbia-blue-2/90">Structured paths to guide your learning journey.</p>
@@ -125,7 +125,7 @@
         <ul role="list" aria-label="Topic overview" id="topic-list" class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
           <li>
             <article aria-labelledby="t-basics" class="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-md shadow-black/30 p-5">
-              <h3 id="t-basics" class="text-xl font-medium text-alice-blue"><a class="hover:underline" href="/topics/basics">Basics</a></h3>
+              <h3 id="t-basics" class="text-xl font-medium text-alice-blue"><a class="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/basics">Basics</a></h3>
               <p class="mt-2 text-columbia-blue-2">Programming principles, clean code, and version control.</p>
               <a class="mt-4 inline-flex items-center text-cocoa-brown hover:text-russet" href="/topics/basics">Start exploring</a>
             </article>
@@ -133,7 +133,7 @@
 
           <li>
             <article aria-labelledby="t-accessibility" class="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-md shadow-black/30 p-5">
-              <h3 id="t-accessibility" class="text-xl font-medium text-alice-blue"><a class="hover:underline" href="/topics/accessibility">Accessibility</a></h3>
+              <h3 id="t-accessibility" class="text-xl font-medium text-alice-blue"><a class="hover:underline  focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/accessibility">Accessibility</a></h3>
               <p class="mt-2 text-columbia-blue-2">ARIA, keyboard navigation, and inclusive design practices.</p>
               <a class="mt-4 inline-flex items-center text-cocoa-brown hover:text-russet" href="/topics/accessibility">Start exploring</a>
             </article>
@@ -141,7 +141,7 @@
 
           <li>
             <article aria-labelledby="t-security" class="h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-md shadow-black/30 p-5">
-              <h3 id="t-security" class="text-xl font-medium text-alice-blue"><a class="hover:underline" href="/topics/security">Security</a></h3>
+              <h3 id="t-security" class="text-xl font-medium text-alice-blue"><a class="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/topics/security">Security</a></h3>
               <p class="mt-2 text-columbia-blue-2">OWASP fundamentals, authentication, and safe practices.</p>
               <a class="mt-4 inline-flex items-center text-cocoa-brown hover:text-russet" href="/topics/security">Start exploring</a>
             </article>
@@ -155,8 +155,8 @@
       <div aria-hidden="true">
         <svg id="wave-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 180" preserveAspectRatio="none" class="block w-full h-40 md:h-56 lg:h-72 pointer-events-none">
           <defs>
-            <linearGradient id="wave-grad-2" x1="0" x2="1" y1="0" y2="0">
-              <stop stop-color="#071d29" offset="0"></stop>
+            <linearGradient id="wave-grad-2" x1="0" y1="0" x2="0" y2="1">
+              <stop stop-color="#061720" offset="0"></stop>
               <stop stop-color="#061720" offset="1"></stop>
             </linearGradient>
           </defs>
@@ -176,7 +176,7 @@
     </section>
 
     <!-- Courses / learning paths -->
-    <section id="courses" aria-labelledby="courses-heading" class="relative py-16 md:py-24 bg-gradient-to-b from-rich-black-2/60 to-rich-black-2/80">
+    <section id="courses" aria-labelledby="courses-heading" class="relative py-16 md:py-24" style="background: linear-gradient(to bottom, #061720, #041017);">
       <div class="mx-auto max-w-6xl px-4">
         <h2 id="courses-heading" class="text-2xl md:text-3xl font-semibold text-alice-blue">Learn by Topic</h2>
         <p class="lead mt-2 text-columbia-blue-2/90">Step-by-step guides and course-like learning paths — free for now.</p>
@@ -215,8 +215,8 @@
       <div aria-hidden="true">
         <svg id="wave-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 180" preserveAspectRatio="none" class="block w-full h-40 md:h-56 lg:h-72 pointer-events-none">
           <defs>
-            <linearGradient id="wave-grad-3" x1="0" x2="1" y1="0" y2="0">
-              <stop stop-color="#061720" offset="0"></stop>
+            <linearGradient id="wave-grad-3" x1="0" y1="0" x2="0" y2="1">
+              <stop stop-color="#041017" offset="0"></stop>
               <stop stop-color="#041017" offset="1"></stop>
             </linearGradient>
           </defs>
@@ -236,36 +236,36 @@
     </section>
 
     <!-- Contribution / community -->
-    <section id="contribute" aria-labelledby="contribute-heading" class="relative py-16 md:py-24 bg-gradient-to-b from-rich-black-2/80 to-rich-black-3/95">
+    <section id="contribute" aria-labelledby="contribute-heading" class="relative py-16 md:py-24" style="background: linear-gradient(to bottom, #041017, #010304);">
       <div class="mx-auto max-w-5xl px-4">
         <h2 id="contribute-heading" class="text-2xl md:text-3xl font-semibold text-alice-blue">Contribute to Code Navigator</h2>
         <p class="mt-2 text-columbia-blue-2">Your ideas help others find clarity. Submit topics, suggest improvements, or share a lesson.</p>
 
         <!-- Simple contribution options (non-sales) -->
         <div role="group" aria-label="Contribution actions" class="mt-6 flex flex-wrap gap-3">
-          <a class="inline-flex items-center rounded-lg px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/contribute/submit-idea">Submit an idea</a>
-          <a class="inline-flex items-center rounded-lg px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-paynes-gray/60" href="/contribute/request-topic">Request a topic</a>
+          <a class="inline-flex items-center rounded-lg px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/contribute/submit-idea">Submit an idea</a>
+          <a class="inline-flex items-center rounded-lg px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-alice-blue/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/contribute/request-topic">Request a topic</a>
           <a class="inline-flex items-center rounded-lg px-4 py-2 bg-cocoa-brown text-seashell hover:bg-russet focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/contribute/write">Share an article</a>
         </div>
 
         <!-- Lightweight contribution form (progressive enhancement friendly) -->
-        <form id="contrib-form" action="/api/contribute" method="post" aria-label="Submit an idea" class="mt-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg shadow-black/30 ring-1 ring-inset ring-white/5 p-4 md:p-6">
+        <form id="contrib-form" action="/api/contribute" method="post" aria-label="Submit an idea" class="mt-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg shadow-black/30 ring-1 ring-inset ring-cocoa-brown/60 p-4 md:p-6">
           <fieldset class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <legend class="visually-hidden sr-only">Suggest an idea or topic</legend>
 
             <div class="md:col-span-1">
               <label for="contrib-name" class="block text-sm text-columbia-blue">Your name (optional)</label>
-              <input id="contrib-name" name="name" type="text" autocomplete="name" class="mt-1 w-full rounded-xl bg-rich-black/40 text-alice-blue border border-paynes-gray/30 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-paynes-gray/60" />
+              <input id="contrib-name" name="name" type="text" autocomplete="name" class="mt-1 w-full rounded-xl bg-rich-black/40 text-alice-blue border border-paynes-gray/30 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cocoa-brown/60" />
             </div>
 
             <div class="md:col-span-1">
               <label for="contrib-email" class="block text-sm text-columbia-blue">Email (optional, for follow-up)</label>
-              <input id="contrib-email" name="email" type="email" inputmode="email" autocomplete="email" class="mt-1 w-full rounded-xl bg-rich-black/40 text-alice-blue border border-paynes-gray/30 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-paynes-gray/60" />
+              <input id="contrib-email" name="email" type="email" inputmode="email" autocomplete="email" class="mt-1 w-full rounded-xl bg-rich-black/40 text-alice-blue border border-paynes-gray/30 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cocoa-brown/60" />
             </div>
 
             <div class="md:col-span-1">
               <label for="contrib-type" class="block text-sm text-columbia-blue">I would like to:</label>
-              <select id="contrib-type" name="type" required class="mt-1 w-full rounded-xl bg-rich-black/40 text-alice-blue border border-paynes-gray/30 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-paynes-gray/60">
+              <select id="contrib-type" name="type" required class="mt-1 w-full rounded-xl bg-rich-black/40 text-alice-blue border border-paynes-gray/30 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-cocoa-brown/60">
                 <option value="">Choose…</option>
                 <option value="topic">Request a topic</option>
                 <option value="idea">Submit an idea</option>
@@ -275,7 +275,7 @@
 
             <div class="md:col-span-2">
               <label for="contrib-text" class="block text-sm text-columbia-blue">Tell us about it</label>
-              <textarea id="contrib-text" name="text" rows="6" required class="mt-1 w-full rounded-2xl bg-rich-black/40 text-alice-blue border border-paynes-gray/30 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-paynes-gray/60"></textarea>
+              <textarea id="contrib-text" name="text" rows="6" required class="mt-1 w-full rounded-2xl bg-rich-black/40 text-alice-blue border border-paynes-gray/30 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cocoa-brown/60"></textarea>
             </div>
 
             <div class="md:col-span-2">
@@ -310,14 +310,14 @@
     </section>
 
     <!-- Optional: quick links for resources / roadmap -->
-    <section id="roadmap" aria-labelledby="roadmap-heading" class="relative py-16 md:py-24 bg-gradient-to-b from-rich-black-3 to-black">
+    <section id="roadmap" aria-labelledby="roadmap-heading" class="relative py-16 md:py-24" style="background: linear-gradient(to bottom, #010304, #010304);">
       <div class="mx-auto max-w-5xl px-4">
         <h2 id="roadmap-heading" class="text-2xl md:text-3xl font-semibold text-alice-blue">Roadmaps & Resources</h2>
         <p class="mt-2 text-columbia-blue-2">Starter roadmaps for common career goals (Frontend, Backend, DevOps, etc.).</p>
         <ul class="mt-6 space-y-2">
-          <li><a class="text-columbia-blue hover:text-alice-blue underline-offset-2 hover:underline" href="/roadmaps/frontend">Frontend roadmap</a></li>
-          <li><a class="text-columbia-blue hover:text-alice-blue underline-offset-2 hover:underline" href="/roadmaps/backend">Backend roadmap</a></li>
-          <li><a class="text-columbia-blue hover:text-alice-blue underline-offset-2 hover:underline" href="/resources">Curated tools & books</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus:ring-2 focus:ring-cocoa-brown/60 underline-offset-2 hover:underline" href="/roadmaps/frontend">Frontend roadmap</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus:ring-2 focus:ring-cocoa-brown/60 underline-offset-2 hover:underline" href="/roadmaps/backend">Backend roadmap</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus:ring-2 focus:ring-cocoa-brown/60 underline-offset-2 hover:underline" href="/resources">Curated tools & books</a></li>
         </ul>
       </div>
     </section>
@@ -335,10 +335,10 @@
 
       <nav aria-label="Footer" role="navigation" class="mt-6">
         <ul class="flex flex-wrap gap-4">
-          <li><a class="text-columbia-blue hover:text-alice-blue" href="/privacy">Privacy</a></li>
-          <li><a class="text-columbia-blue hover:text-alice-blue" href="/terms">Terms</a></li>
-          <li><a class="text-columbia-blue hover:text-alice-blue" href="/contact">Contact</a></li>
-          <li><a class="text-columbia-blue hover:text-alice-blue" href="https://github.com/your-repo" rel="noopener">GitHub</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/privacy">Privacy</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/terms">Terms</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="/contact">Contact</a></li>
+          <li><a class="text-columbia-blue hover:text-alice-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa-brown/60" href="https://github.com/your-repo" rel="noopener">GitHub</a></li>
         </ul>
       </nav>
 
